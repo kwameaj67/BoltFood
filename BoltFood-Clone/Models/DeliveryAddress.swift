@@ -11,18 +11,19 @@ struct DeliveryAddress {
     var location: String
     var area: String?
     var icon: String
+    var selected: Bool
     
     
     static let addressData: [DeliveryAddress] = [
     
-        DeliveryAddress(location: "Current location", area: "Adamafio Link", icon: "navigate"),
-        DeliveryAddress(location: "Home", area: "Ayawaso", icon: "home-outline"),
-        DeliveryAddress(location: "Work", area: "West Airport, Accra", icon: "work"),
-        DeliveryAddress(location: "Accra", area: nil, icon: "map-pin"),
-        DeliveryAddress(location: "North Airport Road", area: nil, icon: "map-pin"),
-        DeliveryAddress(location: "Accra", area: "Ghana", icon: "map-pin"),
-        DeliveryAddress(location: "Department", area: "Accra", icon: "map-pin"),
-        DeliveryAddress(location: "Law School", area: "University of Ghana", icon: "map-pin"),
-        DeliveryAddress(location: "North Legon", area: "Accra, Ghana", icon: "map-pin"),
+        DeliveryAddress(location: "Current location", area: "Adamafio Link", icon: "navigate",selected: false),
+        DeliveryAddress(location: "Home", area: "Ayawaso", icon: "home-outline",selected: false),
+        DeliveryAddress(location: "Work", area: "West Airport, Accra", icon: "work", selected: false),
+        DeliveryAddress(location: "Accra", area: nil, icon: "map-pin", selected: false),
+        DeliveryAddress(location: "North Airport Road", area: nil, icon: "map-pin", selected: false),
+        DeliveryAddress(location: "Accra", area: "Ghana", icon: "map-pin", selected: false),
+        DeliveryAddress(location: "Department", area: "Accra", icon: "map-pin", selected: false),
+        DeliveryAddress(location: "Law School", area: "University of Ghana", icon: "map-pin", selected: false),
+        DeliveryAddress(location: "North Legon", area: "Accra, Ghana", icon: "map-pin", selected: false),
     ]
 }

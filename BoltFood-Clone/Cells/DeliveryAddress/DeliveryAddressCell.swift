@@ -9,6 +9,11 @@ import UIKit
 
 class DeliveryAddressCell: UITableViewCell {
 
+    var data : DeliveryAddress? {
+        didSet{
+            manageData()
+        }
+    }
     static let reuseableId: String = "DeliveryAddress"
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: DeliveryAddressCell.reuseableId)
@@ -51,9 +56,20 @@ class DeliveryAddressCell: UITableViewCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+   
+    let selectedIcon : UIImageView = {
+        var iv = UIImageView()
+        iv.tintColor = color.green
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.isHidden = true
+        iv.alpha = 0
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
     
     func setupViews(){
-        [locationContainer,icon].forEach {
+        [locationContainer,icon,selectedIcon].forEach {
             contentView.addSubview($0)
         }
         [locationLabel,areaLabel].forEach{
@@ -73,16 +89,20 @@ class DeliveryAddressCell: UITableViewCell {
             locationContainer.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 16),
             locationContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
+            selectedIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            selectedIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            selectedIcon.widthAnchor.constraint(equalToConstant: 30),
+            selectedIcon.heightAnchor.constraint(equalTo: selectedIcon.widthAnchor),
+            
         ])
     }
-    func setup(for item: DeliveryAddress){
+    func manageData(){
+        guard let item = data else { return }
         locationLabel.text = item.location
         icon.image = UIImage(named: item.icon)
         if item.area != nil {
             areaLabel.text = item.area
-        }
-        
-        
+        }     
     }
 
 }

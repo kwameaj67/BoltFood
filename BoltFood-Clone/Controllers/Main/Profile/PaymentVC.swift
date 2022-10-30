@@ -172,9 +172,6 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
                     cell.circleImage.image = UIImage(systemName: "circle")
                     cell.circleImage.tintColor = color.grey.withAlphaComponent(0.4)
                 }
-//            sections[indexPath.section].sectionItems[indexPath.row].selected.toggle()
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//            print(item.name, sections[indexPath.section].sectionItems[indexPath.row].selected)
         }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

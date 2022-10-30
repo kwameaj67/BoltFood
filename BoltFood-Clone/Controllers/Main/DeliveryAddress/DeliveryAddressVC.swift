@@ -78,7 +78,7 @@ extension DeliveryAddressVC: UINavigationBarDelegate, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryAddressCell.reuseableId, for: indexPath) as! DeliveryAddressCell
-        cell.setup(for: addressList[indexPath.row])
+        cell.data = addressList[indexPath.row]
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
@@ -88,9 +88,27 @@ extension DeliveryAddressVC: UINavigationBarDelegate, UITableViewDelegate, UITab
         return 65.0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = addressList[indexPath.row]
+        var item = addressList[indexPath.row]
+        let cell = addressTableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! DeliveryAddressCell
+        
+        if !item.selected {
+            item.selected = true
+            cell.selectedIcon.image = UIImage(systemName: "checkmark.circle.fill")
+            cell.selectedIcon.isHidden = false
+            cell.selectedIcon.alpha = 1
+        } else {
+            item.selected = false
+            cell.selectedIcon.image = nil
+            cell.selectedIcon.isHidden = true
+        }
         selectAddressDelegate?.selectAddress(address: item.location)
         closeVC()
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = addressTableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! DeliveryAddressCell
+        cell.selectedIcon.image = nil
+        cell.selectedIcon.image = nil
+        cell.selectedIcon.isHidden = true
     }
     
     private func configureNavBar(){
