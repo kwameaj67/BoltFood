@@ -60,7 +60,7 @@ struct Food{
     static let restaurantsData: [Food] = [
        
         Food(title: "Barituas Campus Hub", price: 15.00, discountPrice: 50.0, rating: 4.0, image: "pizza2", discountPercent: 4, duration: "10-50 min",closed:true,availableTime:8),
-        Food(title: "Pizza Inn Accra Mall", price: 34.00, discountPrice: 40.0, rating: 5.0, image: "rice", discountPercent: 3, duration: "20-45 min",closed:false,availableTime:12),
+        Food(title: "Pizza Inn Accra Mall", price: 34.00, discountPrice: 40.0, rating: 5.0, image: "pizza-1", discountPercent: 3, duration: "20-45 min",closed:false,availableTime:12),
         Food(title: "Havilla Kitchen", price: 60.00, discountPrice: nil, rating: 4.9, image: "chicken", discountPercent: nil, duration: "5-30 min",closed:false,availableTime:11),
         Food(title: "Mummy's Grill", price: 96.00, discountPrice: 70.0, rating: 5.0, image: "pizza3", discountPercent: 3, duration: "40-50 min",closed:false,availableTime:9),
        
@@ -83,9 +83,9 @@ struct FoodSection{
     var sectionItems:[FoodItem]
     
     static let specialOffer:[FoodItem] = [
-        FoodItem(title: "Noodles Bucket", description: "", price: 66.0, discountPrice: 59.4, image: "food", available:true),
+        FoodItem(title: "Noodles Bucket", description: "Eight(8) pieces of wings", price: 66.0, discountPrice: 59.4, image: "food", available:true),
         FoodItem(title: "Me Treat", description: "Six pieces of wings", price: 120.0, discountPrice: 27, image: "chicken2", available:true),
-        FoodItem(title: "Pacherko", description: "", price: 200.0, discountPrice: nil, image: nil, available:false)
+        FoodItem(title: "Pacherko", description: "Beef, chicken", price: 200.0, discountPrice: nil, image: "pizza3", available:true)
     ]
     
     

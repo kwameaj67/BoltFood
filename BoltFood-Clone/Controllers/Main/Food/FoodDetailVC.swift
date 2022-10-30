@@ -48,8 +48,6 @@ class FoodDetailVC: UIViewController {
         tv.register(FoodTitleCell.self, forCellReuseIdentifier: FoodTitleCell.reusableId)
         tv.register(DeliverDetailsCell.self, forCellReuseIdentifier: DeliverDetailsCell
                         .reusableId)
-//        tv.register(FoodOptionCell.self, forCellReuseIdentifier: FoodOptionCell
-//                        .reuseableId)
         tv.delegate = self
         tv.dataSource = self
         tv.backgroundColor = color.bg_grey
