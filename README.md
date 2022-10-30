@@ -1,5 +1,5 @@
 # BoltFood-Clone
-Decided to build some few screens of one of my favourite apps BolfFood.
+Decided to build some few screens of one of my favourite apps BoltFood.
 
 ### Note ⚙️
 The application was built using: 
