@@ -1,5 +1,5 @@
 # BoltFood-Clone
-I had some free time and decided to build some few screens of one of my favourite apps BolfFood.
+Decided to build some few screens of one of my favourite apps BolfFood.
 
 ### Note ⚙️
 The application was built using: 
@@ -14,13 +14,8 @@ The application was built using:
 
 
 # Screenshots
-<img align='left' src="UdemyWeatherApp/Assets.xcassets/emptyScreen.imageset/emptyScreen.png"  width="250">
-<img src="UdemyWeatherApp/Assets.xcassets/weatherScreen.imageset/weatherScreen.png"  width="250">
+<img align='left' src="BoltFood-Clone/Assets.xcassets/home-1.imageset/home.png"  width="250">
+<img src="BoltFood-Clone/Assets.xcassets/toprated.imageset/toprated.png"  width="250">
+<img src="BoltFood-Clone/Assets.xcassets/restaurants.imageset/restaurants.png"  width="250">
 
 
-<img align='left' src="UdemyWeatherApp/Assets.xcassets/weatherScreen2.imageset/weatherScreen2.png"  width="250">
-<img src="UdemyWeatherApp/Assets.xcassets/cityScreen.imageset/cityScreen.png"  width="250">
-
-<img src="UdemyWeatherApp/Assets.xcassets/cityScreen2.imageset/cityScreen2.png"  width="250">
-
-Cheers 🍿
