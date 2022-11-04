@@ -68,7 +68,7 @@ class SearchVC: UIViewController {
     @objc func didTapCancelSearchView(){
         overlaySearchHeaderView.searchTextField.resignFirstResponder()
         UIView.animate(withDuration: 0.2) {
-            self.overlaySearchHeaderView.transform = CGAffineTransform(translationX: 0, y: -100)
+            self.overlaySearchHeaderView.transform = CGAffineTransform(translationX: 0, y: -200)
         }
        
     }
