@@ -7,14 +7,13 @@
 
 import UIKit
 
-class SearchHeaderVIew: UIView {
+class SearchHeaderView: UIView {
 
    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
-        clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -22,13 +21,11 @@ class SearchHeaderVIew: UIView {
     }
     
     lazy var searchContainer: UIView = {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSearchView))
         let v = SearchView()
         v.layer.cornerRadius = 10.0
         v.backgroundColor = color.background.withAlphaComponent(0.9)
         v.translatesAutoresizingMaskIntoConstraints = false
         v.isUserInteractionEnabled = true
-        v.addGestureRecognizer(tap)
         return v
     }()
     
@@ -36,20 +33,12 @@ class SearchHeaderVIew: UIView {
         var btn = UIButton(frame:.zero)
         let image = UIImage(named: "setting")?.withRenderingMode(.alwaysTemplate)
         btn.setImage(image, for: .normal)
-        btn.addTarget(self, action: #selector(didTapFilterButton), for: .touchUpInside)
         btn.tintColor = .black
         btn.imageView?.contentMode = .scaleAspectFit
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
-    @objc func didTapSearchView(){
-        print("I was tapped")
-    }
-    @objc func didTapFilterButton(){
-        print("image was tapped")
-    }
-   
     
     func setupViews()
     {

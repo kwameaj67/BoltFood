@@ -29,15 +29,24 @@ class SearchVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    let searchHeaderView = SearchHeaderVIew()
-    
-    func setupViews(){
-        [searchHeaderView,categoryTableView].forEach {
-            view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
+    lazy var searchHeaderView: SearchHeaderView = {
+        let hv = SearchHeaderView()
+        hv.isUserInteractionEnabled = true
+        hv.searchContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapSearchView)))
+        hv.filterButton.addTarget(self, action: #selector(didTapFilterButton), for: .primaryActionTriggered)
+        hv.translatesAutoresizingMaskIntoConstraints = false
+        return hv
+    }()
+    lazy var overlaySearchHeaderView: OverlaySearchHeaderView = {
+        let hv = OverlaySearchHeaderView()
+        hv.isHidden = true
+        hv.alpha = 0
+        hv.transform = CGAffineTransform(translationX: 0, y: -100)
+        hv.cancelButton.addTarget(self, action: #selector(didTapCancelSearchView), for: .touchUpInside)
+        hv.translatesAutoresizingMaskIntoConstraints = false
+        return hv
+    }()
+   
     let categoryTableView: UITableView = {
         let list = UITableView(frame: .zero, style: .grouped)
         list.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +55,53 @@ class SearchVC: UIViewController {
         list.backgroundColor = .white
         return list
     }()
+    
+    @objc func didTapSearchView(){
+        UIView.animate(withDuration: 0.2) {
+            self.overlaySearchHeaderView.isHidden = false
+            self.overlaySearchHeaderView.alpha = 1
+            self.overlaySearchHeaderView.transform = .identity
+        }
+        overlaySearchHeaderView.searchTextField.becomeFirstResponder()
+    }
+    
+    @objc func didTapCancelSearchView(){
+        overlaySearchHeaderView.searchTextField.resignFirstResponder()
+        UIView.animate(withDuration: 0.2) {
+            self.overlaySearchHeaderView.transform = CGAffineTransform(translationX: 0, y: -100)
+        }
+       
+    }
+    
+    @objc func didTapFilterButton(){
+        print("filter button was tapped")
+    }
+   
+    func setupViews(){
+        [searchHeaderView,overlaySearchHeaderView,categoryTableView].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        overlaySearchHeaderView.bringSubviewToFront(searchHeaderView)
+    }
+    func setupConstraints(){
+        NSLayoutConstraint.activate([
+            searchHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchHeaderView.heightAnchor.constraint(equalToConstant: 85.0),
+            
+            overlaySearchHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
+            overlaySearchHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            overlaySearchHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            overlaySearchHeaderView.heightAnchor.constraint(equalToConstant: 120.0),
+            
+            categoryTableView.topAnchor.constraint(equalTo: searchHeaderView.bottomAnchor, constant: 10),
+            categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
     
 }
 
@@ -76,24 +132,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         40
     }
     
-    func setupConstraints(){
-        NSLayoutConstraint.activate([
-            
-            searchHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchHeaderView.heightAnchor.constraint(equalToConstant: 85.0),
-            
-            categoryTableView.topAnchor.constraint(equalTo: searchHeaderView.bottomAnchor, constant: 10),
-            categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        
-        ])
-    }
+   
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
-//        print(y)
         if (y > 15.0){
             searchHeaderView.addBottomShadows()
         }else{

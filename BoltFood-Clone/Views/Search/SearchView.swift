@@ -13,6 +13,7 @@ class SearchView: UIView {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
+        isUserInteractionEnabled = true
     }
     
     required init?(coder: NSCoder) {
@@ -63,8 +64,7 @@ class SearchView: UIView {
             
             searchIcon.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             searchIcon.widthAnchor.constraint(equalToConstant: 20),
-            searchIcon.heightAnchor.constraint(equalTo: searchIcon.heightAnchor),
-            
+
             placeholderText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             
         ])
