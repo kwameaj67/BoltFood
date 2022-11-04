@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        mainCoordinator?.startCoordinator()
 //        window?.rootViewController = mainCoordinator?.navigationController
         let userDefaults = UserDefaults.standard
-        if !userDefaults.bool(forKey: "isLoggedIn") {
+        if userDefaults.bool(forKey: "isLoggedIn") {
             window?.rootViewController = CustomTabBarVC()
         }else {
             window?.rootViewController = RegisterVC()
