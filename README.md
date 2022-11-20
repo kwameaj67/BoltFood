@@ -9,7 +9,7 @@ The application was built using:
 
 ### Core Technologies 📲
 * Swift
-* Programmatic UI
+* UIKit (Programmatic approach)
 * Protocol Delegation
 
 
