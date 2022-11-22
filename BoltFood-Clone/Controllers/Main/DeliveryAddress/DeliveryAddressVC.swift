@@ -116,7 +116,7 @@ extension DeliveryAddressVC: UINavigationBarDelegate, UITableViewDelegate, UITab
         let cell = addressTableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! DeliveryAddressCell
         if !item.selected {
             item.selected = !item.selected
-            print(item.location,item.selected)
+           // print(item.location,item.selected)
             cell.selectedIcon.image = UIImage(systemName: "checkmark.circle.fill")
             cell.selectedIcon.isHidden = false
             cell.selectedIcon.alpha = 1
