@@ -12,7 +12,7 @@ protocol AddressSelectDelegate: AnyObject {
 }
 class DeliveryAddressVC: UIViewController {
 
-    private var addressList:[DeliveryAddress] = DeliveryAddress.addressData
+    private var addressList:[DeliveryAddress] = []
     
     weak var selectAddressDelegate : AddressSelectDelegate?
     override func viewDidLoad() {
@@ -22,11 +22,29 @@ class DeliveryAddressVC: UIViewController {
         setupViews()
         setupConstraints()
         configureNavBar()
+        addDeliveryAddress()
         addressTableView.delegate = self
         addressTableView.dataSource = self
         addressTableView.register(DeliveryAddressCell.self, forCellReuseIdentifier: DeliveryAddressCell.reuseableId)
+       
     }
-   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        for address in addressList{
+            print(address.location,address.selected)
+        }
+    }
+    func addDeliveryAddress(){
+        addressList.append(DeliveryAddress(location: "Current location", area: "Adamafio Link", icon: "navigate",selected: false))
+        addressList.append(DeliveryAddress(location: "Home", area: "Ayawaso", icon: "home-outline",selected: false))
+        addressList.append(DeliveryAddress(location: "Work", area: "West Airport, Accra", icon: "work", selected: false))
+        addressList.append(DeliveryAddress(location: "Accra", area: nil, icon: "map-pin", selected: false))
+        addressList.append(DeliveryAddress(location: "North Airport Road", area: nil, icon: "map-pin", selected: false))
+        addressList.append(DeliveryAddress(location: "Accra", area: "Ghana", icon: "map-pin", selected: false))
+        addressList.append(DeliveryAddress(location: "Department", area: "Accra", icon: "map-pin", selected: false))
+        addressList.append(DeliveryAddress(location: "Law School", area: "University of Ghana", icon: "map-pin", selected: false))
+        addressList.append(DeliveryAddress(location: "North Legon", area: "Accra, Ghana", icon: "map-pin", selected: false))
+    }
     // MARK: Properties -
     lazy var searchContainer: UIView = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSearchView))
@@ -77,8 +95,14 @@ extension DeliveryAddressVC: UINavigationBarDelegate, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = addressList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryAddressCell.reuseableId, for: indexPath) as! DeliveryAddressCell
-        cell.data = addressList[indexPath.row]
+        cell.data = item
+        if item.selected == true {
+            cell.selectedIcon.image = UIImage(systemName: "checkmark.circle.fill")
+            cell.selectedIcon.isHidden = false
+            cell.selectedIcon.alpha = 1
+        }
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
@@ -88,16 +112,17 @@ extension DeliveryAddressVC: UINavigationBarDelegate, UITableViewDelegate, UITab
         return 65.0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var item = addressList[indexPath.row]
+        let item = addressList[indexPath.row]
         let cell = addressTableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! DeliveryAddressCell
-        
         if !item.selected {
-            item.selected = true
+            item.selected = !item.selected
+            print(item.location,item.selected)
             cell.selectedIcon.image = UIImage(systemName: "checkmark.circle.fill")
             cell.selectedIcon.isHidden = false
             cell.selectedIcon.alpha = 1
-        } else {
-            item.selected = false
+        }
+        else {
+            item.selected = !item.selected
             cell.selectedIcon.image = nil
             cell.selectedIcon.isHidden = true
         }

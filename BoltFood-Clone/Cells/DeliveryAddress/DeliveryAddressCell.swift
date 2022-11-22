@@ -24,7 +24,7 @@ class DeliveryAddressCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     let locationLabel: UILabel = {
         let lb = UILabel()
         lb.textColor = color.black
@@ -102,7 +102,7 @@ class DeliveryAddressCell: UITableViewCell {
         icon.image = UIImage(named: item.icon)
         if item.area != nil {
             areaLabel.text = item.area
-        }     
+        }
     }
 
 }

@@ -16,6 +16,8 @@ class HomeVC: UIViewController, AddressSelectDelegate {
     let popularFood = Food.popularData
     let restaurantFood = Food.restaurantsData
     
+    let foodLayout = FoodCompositionalLayout.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -111,80 +113,17 @@ class HomeVC: UIViewController, AddressSelectDelegate {
         let layout = UICollectionViewCompositionalLayout { sectionNumber, env in
             switch sectionNumber{
             case 0:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                               
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
-                
-                let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 20
-                section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
-                section.orthogonalScrollingBehavior = .continuous
-                
-                section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
-                ]
-                return section
+                return self.foodLayout.discountLayout()
             case 1:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                               
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
-                
-                let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 20
-                section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
-                section.orthogonalScrollingBehavior = .continuous
-                
-                section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
-                ]
-                return section
+                return self.foodLayout.deliveryLayout()
             case 2:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                               
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(200)), subitems: [item])
-                
-                let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 20
-                section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
-                section.orthogonalScrollingBehavior = .continuous
-                
-                section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
-                ]
-                return section
+                return self.foodLayout.topRatedLayout()
             case 3:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                               
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
-                
-                let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 20
-                section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
-                section.orthogonalScrollingBehavior = .continuous
-                
-                section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
-                ]
-                return section
-                
+                return self.foodLayout.popularLayout()
             case 4:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                               
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(260)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = .init(top: 0, leading: 30, bottom: 10, trailing: 30)
-                section.boundarySupplementaryItems = [
-                    .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
-                ]
-                return section
+                return self.foodLayout.restaurantsLayout()
             default:
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-                
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(100), heightDimension: .absolute(170)), subitems: [item])
-               
-                let section = NSCollectionLayoutSection.init(group: group)
-                section.orthogonalScrollingBehavior = .continuous
-                return section
+                return self.foodLayout.defaultLayout()
             }
         }
         collectionView.setCollectionViewLayout(layout, animated: true)
