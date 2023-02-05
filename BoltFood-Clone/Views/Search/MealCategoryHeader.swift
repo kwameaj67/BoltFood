@@ -15,6 +15,7 @@ class MealCategoryHeader: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: MealCategoryHeader.reuseableId)
         setupViews()
         setupConstraints()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -22,6 +23,7 @@ class MealCategoryHeader: UITableViewHeaderFooterView {
     }
     let headingLabel: UILabel = {
         let lb = UILabel(frame: .zero)
+        lb.text = "Popular categories"
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = color.black
         lb.font = UIFont(name: font.bold.rawValue, size: 18)

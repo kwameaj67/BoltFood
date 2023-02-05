@@ -18,6 +18,7 @@ class PromoCodeVC: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .white
         setupViews()
         setupConstraints()
+        setupNavigationBar()
         promoCodeInput.delegate = self
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gesture:))))
         
@@ -29,7 +30,7 @@ class PromoCodeVC: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        setupNavigationBar()
+        
         tabBarController?.tabBar.isHidden = true
         tabBarController?.tabBar.layer.zPosition = -1
     }
@@ -49,7 +50,8 @@ class PromoCodeVC: UIViewController, UITextFieldDelegate {
         
         
         let backButton = UIButton(type: .system)
-        backButton.setImage(UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let image = UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate).withConfiguration(UIImage.SymbolConfiguration(weight: .semibold))
+        backButton.setImage(image, for: .normal)
         backButton.tintColor = .black
         backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)
@@ -111,11 +113,11 @@ class PromoCodeVC: UIViewController, UITextFieldDelegate {
     }
   
     @objc private func keyboardWillShow(notification: Notification){
-        if let _ = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardRectangle = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if isShowingKeyboard{
-                self.bottomButtonConstraint.constant = -280
+                self.bottomButtonConstraint.constant = -(keyboardRectangle.height) + 20
             }
-            UIView.animate(withDuration: 0.8) {
+            UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -125,6 +127,9 @@ class PromoCodeVC: UIViewController, UITextFieldDelegate {
         if let _ = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if isShowingKeyboard{
                 self.bottomButtonConstraint.constant = -20
+            }
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
             }
         }
     }

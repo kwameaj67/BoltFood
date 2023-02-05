@@ -9,6 +9,9 @@ import UIKit
 
 class RegisterVC: UIViewController, UITextFieldDelegate {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

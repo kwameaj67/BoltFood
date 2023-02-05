@@ -22,7 +22,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     // MARK: Properties: -
     let headingLabel: UILabel = {
         let lb = UILabel(frame: .zero)
-        lb.font = UIFont(name: font.bold.rawValue, size: 19)
+        lb.font = UIFont(name: font.bold.rawValue, size: 15)
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.scaleFont()
@@ -32,7 +32,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     let headingButton: UIButton = {
         var btn = UIButton()
         btn.setTitleColor(color.dark_green, for: .normal)
-        btn.titleLabel?.font = UIFont(name: font.bold.rawValue, size: 14)
+        btn.titleLabel?.font = UIFont(name: font.bold.rawValue, size: 12)
         btn.backgroundColor = color.light_green
         btn.setTitle("All", for: .normal)
         btn.layer.cornerRadius = 5
@@ -53,8 +53,8 @@ class HeaderCollectionReusableView: UICollectionReusableView {
             
             headingButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             headingButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headingButton.heightAnchor.constraint(equalToConstant: 25),
-            headingButton.widthAnchor.constraint(equalToConstant: 40),
+            headingButton.heightAnchor.constraint(equalToConstant: 20),
+            headingButton.widthAnchor.constraint(equalToConstant: 30),
             
         ])
     }

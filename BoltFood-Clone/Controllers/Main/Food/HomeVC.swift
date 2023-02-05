@@ -77,7 +77,7 @@ class HomeVC: UIViewController, AddressSelectDelegate {
         let lb = UILabel()
         lb.text = "Accra"
         lb.textColor = color.black
-        lb.font = UIFont(name: font.light.rawValue, size: 14)
+        lb.font = UIFont(name: font.medium.rawValue, size: 14)
         lb.scaleFont()
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb

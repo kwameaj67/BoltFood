@@ -43,10 +43,21 @@ class CustomTabBarVC: UITabBarController {
         tabBarAppearance.tintColor = color.black
         tabBarAppearance.unselectedItemTintColor = color.grey
         
+        // shadows
+        tabBar.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        tabBar.layer.shadowRadius = 3.0
+        tabBar.layer.shadowOffset =  CGSize(width: 0, height: -3)
+        tabBar.layer.shadowOpacity = 0.2
+        tabBar.layer.borderWidth = 0
+        tabBar.layer.borderColor = UIColor.clear.cgColor
+        tabBar.clipsToBounds = false
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
+        tabBar.backgroundColor = UIColor.white
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        print(tabBar.frame.size.height)
         tabBar.frame.origin.y = view.frame.height - 80
     }
     func setupViews(){
@@ -64,7 +75,7 @@ class CustomTabBarVC: UITabBarController {
         tabItem.selectedImage = selectedImage
         tabItem.title = .none
         tabItem.imageInsets.bottom = -10
-        tabItem.imageInsets = UIEdgeInsets(top: -1, left: -10, bottom: -1, right: -10)
+        tabItem.imageInsets = UIEdgeInsets(top: -0.5, left: -10, bottom: -0.5, right: -10)
         
     }
 

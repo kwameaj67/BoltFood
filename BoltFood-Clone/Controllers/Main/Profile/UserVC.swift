@@ -57,29 +57,36 @@ extension UserVC: UITableViewDelegate, UITableViewDataSource {
         cell.setup(for: item)
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        cell.selectionStyle = .none
+        
+        let bgView = UIView()
+        bgView.backgroundColor = .white.withAlphaComponent(0.6)
+        cell.selectedBackgroundView = bgView
         return cell
     }
+   
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65.0
+        return 58.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        return 80
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+        let item = options[indexPath.row]
+        switch item.type{
+            case .payment:
             navigationController?.pushViewController(PaymentVC(), animated: true)
-        }
-        if indexPath.row == 1{
+        case .promocode:
             navigationController?.pushViewController(PromoCodeVC(), animated: true)
-        }
-        if indexPath.row == 2{
+        case .profile:
             navigationController?.pushViewController(ProfileVC(), animated: true)
-        }
-        if indexPath.row == 4{
+        case .about:
             navigationController?.pushViewController(AboutVC(), animated: true)
+        case .settings:
+            print("Settings")
+        case .help:
+            print("Help")
         }
     }
     
@@ -89,7 +96,7 @@ extension UserVC: UITableViewDelegate, UITableViewDataSource {
     
     func setupConstraints(){
         NSLayoutConstraint.activate([
-            optionTableView.topAnchor.constraint(equalTo: view.topAnchor,constant: 70),
+            optionTableView.topAnchor.constraint(equalTo: view.topAnchor,constant: 50),
             optionTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             optionTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             optionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

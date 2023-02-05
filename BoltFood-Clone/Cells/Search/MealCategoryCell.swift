@@ -30,20 +30,20 @@ class MealCategoryCell: UITableViewCell {
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.numberOfLines = 1
-        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 14)
+        lb.scaleFont()
+        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 13)
         return lb
     }()
+    
     func setupViews(){
         contentView.addSubview(categoryLabel)
     }
     
     func setupConstraints(){
         NSLayoutConstraint.activate([
-        
             categoryLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
         ])
     }
     

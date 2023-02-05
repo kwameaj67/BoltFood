@@ -43,7 +43,7 @@ class SearchView: UIView {
         lb.text = "Restaurants or cuisines"
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = color.grey
-        lb.font = UIFont(name: font.light.rawValue, size: 14)
+        lb.font = UIFont(name: font.regular.rawValue, size: 13)
         lb.scaleFont()
         return lb
     }()
@@ -56,7 +56,6 @@ class SearchView: UIView {
     }
     func setupConstraints(){
         NSLayoutConstraint.activate([
-        
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -25),
@@ -66,7 +65,6 @@ class SearchView: UIView {
             searchIcon.widthAnchor.constraint(equalToConstant: 20),
 
             placeholderText.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            
         ])
     }
 

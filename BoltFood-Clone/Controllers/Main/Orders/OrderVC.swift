@@ -34,7 +34,7 @@ class OrderVC: UIViewController {
         let lb = UILabel()
         lb.text = "My orders"
         lb.textColor = color.black
-        lb.font = UIFont(name: font.bold.rawValue, size: 24)
+        lb.font = UIFont(name: font.bold.rawValue, size: 20)
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()

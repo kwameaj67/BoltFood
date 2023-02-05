@@ -53,17 +53,15 @@ class TopRatedCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints(){
         NSLayoutConstraint.activate([
-            
             imageDescriptionView.topAnchor.constraint(equalTo: topAnchor),
             imageDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageDescriptionView.heightAnchor.constraint(equalToConstant: 120),
+            imageDescriptionView.heightAnchor.constraint(equalToConstant: 100),
             
-            foodDescriptionView.topAnchor.constraint(equalTo: imageDescriptionView.bottomAnchor,constant: 10),
+            foodDescriptionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             foodDescriptionView.leadingAnchor.constraint(equalTo:leadingAnchor),
             foodDescriptionView.trailingAnchor.constraint(equalTo:trailingAnchor),
             foodDescriptionView.heightAnchor.constraint(equalToConstant: 40),
-            
         ])
     }
     func manageData(){

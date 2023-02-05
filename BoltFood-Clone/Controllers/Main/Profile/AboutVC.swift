@@ -9,7 +9,7 @@ import UIKit
 
 class AboutVC: UIViewController {
     
-    private var aboutData = ["Rate the app","Like us on Facebook","Jobs","Legal","Licences"]
+    private var aboutData = ["Rate the app", "Like us on Facebook", "Jobs", "Legal", "Licences"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,8 @@ class AboutVC: UIViewController {
         
         
         let backButton = UIButton(type: .system)
-        backButton.setImage(UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let image = UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate).withConfiguration(UIImage.SymbolConfiguration(weight: .semibold))
+        backButton.setImage(image, for: .normal)
         backButton.tintColor = .black
         backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)

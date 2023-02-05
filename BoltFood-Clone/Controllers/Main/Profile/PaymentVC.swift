@@ -44,7 +44,8 @@ class PaymentVC: UIViewController {
         
         
         let backButton = UIButton(type: .system)
-        backButton.setImage(UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        let image = UIImage(systemName: "arrow.left")?.withRenderingMode(.alwaysTemplate).withConfiguration(UIImage.SymbolConfiguration(weight: .semibold))
+        backButton.setImage(image, for: .normal)
         backButton.tintColor = .black
         backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)
@@ -148,7 +149,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
-            return CGFloat(100)
+            return CGFloat(90)
         }
         if section == 1{
             return CGFloat(60)
@@ -156,7 +157,7 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
         return CGFloat()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = paymentTableView.cellForRow(at: IndexPath(item: indexPath.row, section: indexPath.section)) as! PaymentOptionCell
@@ -176,8 +177,10 @@ extension PaymentVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = paymentTableView.cellForRow(at: IndexPath(item: indexPath.row, section: indexPath.section)) as! PaymentOptionCell
-        cell.circleImage.image = UIImage(systemName: "circle")
-        cell.circleImage.tintColor = color.grey.withAlphaComponent(0.4)
+        if (indexPath.section == 1 && indexPath.row == 0) || indexPath.section == 1 && indexPath.row == 1 {
+            cell.circleImage.image = UIImage(systemName: "circle")
+            cell.circleImage.tintColor = color.grey.withAlphaComponent(0.4)
+        }
     }
     
     func hideViews(_ cell: PaymentOptionCell){

@@ -31,14 +31,14 @@ class FoodImageDetailsView: UIView {
     let discountContainer: UIView = {
         let v = UIView()
         v.backgroundColor = .white
-        v.layer.cornerRadius = 25/2
+        v.layer.cornerRadius = 22/2
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     let discountPercentLabel: UILabel = {
         let lb = UILabel()
         lb.scaleFont()
-        lb.font = UIFont(name: font.semi_bold.rawValue, size: 11)
+        lb.font = UIFont(name: font.semi_bold.rawValue, size: 10)
         lb.textColor = color.red
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -47,14 +47,14 @@ class FoodImageDetailsView: UIView {
     let durationContainer: UIView = {
         let v = UIView()
         v.backgroundColor = .white
-        v.layer.cornerRadius = 25/2
+        v.layer.cornerRadius = 22/2
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     let durationLabel: UILabel = {
         let lb = UILabel()
         lb.scaleFont()
-        lb.font = UIFont(name: font.semi_bold.rawValue, size: 11)
+        lb.font = UIFont(name: font.semi_bold.rawValue, size: 10)
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -63,7 +63,7 @@ class FoodImageDetailsView: UIView {
         let v = UIView()
         v.isHidden = true
         v.alpha = 0
-        v.backgroundColor = .black.withAlphaComponent(0.75)
+        v.backgroundColor = .black.withAlphaComponent(0.7)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -72,7 +72,7 @@ class FoodImageDetailsView: UIView {
         lb.scaleFont()
         lb.isHidden = true
         lb.alpha = 0
-        lb.font = UIFont(name: font.semi_bold.rawValue, size: 14)
+        lb.font = UIFont(name: font.semi_bold.rawValue, size: 12)
         lb.textColor = .white
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -102,7 +102,7 @@ class FoodImageDetailsView: UIView {
   
             discountContainer.topAnchor.constraint(equalTo: foodImage.topAnchor, constant: 12),
             discountContainer.leadingAnchor.constraint(equalTo: foodImage.leadingAnchor, constant: 12),
-            discountContainer.heightAnchor.constraint(equalToConstant: 25),
+            discountContainer.heightAnchor.constraint(equalToConstant: 22),
             
             discountPercentLabel.centerYAnchor.constraint(equalTo: discountContainer.centerYAnchor),
             discountPercentLabel.leadingAnchor.constraint(equalTo: discountContainer.leadingAnchor, constant: 10),
@@ -110,11 +110,11 @@ class FoodImageDetailsView: UIView {
             
             durationContainer.bottomAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: -12),
             durationContainer.trailingAnchor.constraint(equalTo: foodImage.trailingAnchor, constant: -12),
-            durationContainer.heightAnchor.constraint(equalToConstant: 25),
+            durationContainer.heightAnchor.constraint(equalToConstant: 22),
             
             durationLabel.centerYAnchor.constraint(equalTo: durationContainer.centerYAnchor),
-            durationLabel.leadingAnchor.constraint(equalTo: durationContainer.leadingAnchor, constant: 15),
-            durationLabel.trailingAnchor.constraint(equalTo: durationContainer.trailingAnchor, constant: -15),
+            durationLabel.leadingAnchor.constraint(equalTo: durationContainer.leadingAnchor, constant: 10),
+            durationLabel.trailingAnchor.constraint(equalTo: durationContainer.trailingAnchor, constant: -10),
             
             overlayView.topAnchor.constraint(equalTo: topAnchor),
             overlayView.leadingAnchor.constraint(equalTo: leadingAnchor),

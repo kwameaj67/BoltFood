@@ -16,13 +16,8 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
         setupViews()
         setupConstraints()
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
-        categoryTableView.register(MealCategoryCell.self, forCellReuseIdentifier: MealCategoryCell.reuseableId)
-        categoryTableView.register(MealCategoryHeader.self, forHeaderFooterViewReuseIdentifier: MealCategoryHeader.reuseableId)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,8 +42,12 @@ class SearchVC: UIViewController {
         return hv
     }()
    
-    let categoryTableView: UITableView = {
+    lazy var categoryTableView: UITableView = {
         let list = UITableView(frame: .zero, style: .grouped)
+        list.register(MealCategoryCell.self, forCellReuseIdentifier: MealCategoryCell.reuseableId)
+        list.register(MealCategoryHeader.self, forHeaderFooterViewReuseIdentifier: MealCategoryHeader.reuseableId)
+        list.delegate = self
+        list.dataSource = self
         list.translatesAutoresizingMaskIntoConstraints = false
         list.showsVerticalScrollIndicator = false
         list.separatorColor = UIColor.clear
@@ -66,11 +65,7 @@ class SearchVC: UIViewController {
     }
     
     @objc func didTapCancelSearchView(){
-        overlaySearchHeaderView.searchTextField.resignFirstResponder()
-        UIView.animate(withDuration: 0.2) {
-            self.overlaySearchHeaderView.transform = CGAffineTransform(translationX: 0, y: -200)
-        }
-       
+        hideOverlayViewAnimation()
     }
     
     @objc func didTapFilterButton(){
@@ -89,16 +84,16 @@ class SearchVC: UIViewController {
             searchHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchHeaderView.heightAnchor.constraint(equalToConstant: 85.0),
+            searchHeaderView.heightAnchor.constraint(equalToConstant: 80.0),
             
             overlaySearchHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
             overlaySearchHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             overlaySearchHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            overlaySearchHeaderView.heightAnchor.constraint(equalToConstant: 120.0),
+            overlaySearchHeaderView.heightAnchor.constraint(equalToConstant: 125.0),
             
             categoryTableView.topAnchor.constraint(equalTo: searchHeaderView.bottomAnchor, constant: 10),
-            categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -25),
             categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
@@ -116,23 +111,38 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         cell.setup(for: item)
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets.zero
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
+        
+        let bgView = UIView(frame: cell.bounds)
+        bgView.backgroundColor = .white
+        cell.selectedBackgroundView = bgView
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65.0
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! MealCategoryCell
+        cell.categoryLabel.alpha = 0.4
     }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! MealCategoryCell
+        cell.categoryLabel.alpha = 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 58.0
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: MealCategoryHeader.reuseableId) as! MealCategoryHeader
-        view.headingLabel.text = "Popular categories"
-        view.contentView.backgroundColor = .white
         return view
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
     }
     
-   
+   // MARK: - scrollViewDidScroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if (y > 15.0){
@@ -140,7 +150,24 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         }else{
             searchHeaderView.removeBottomShadows()
         }
+        
+        if (y > 150.0){
+            hideOverlayViewAnimation()
+        }
     }
     
    
+}
+
+extension SearchVC {
+    // MARK: hideOverlayViewAnimation -
+    func hideOverlayViewAnimation(){
+        overlaySearchHeaderView.searchTextField.resignFirstResponder()
+        UIView.animate(withDuration: 0.4) {
+            self.overlaySearchHeaderView.transform = CGAffineTransform(translationX: 0, y: -200)
+        } completion: { _ in
+            self.overlaySearchHeaderView.isHidden = true
+            self.overlaySearchHeaderView.alpha = 0
+        }
+    }
 }

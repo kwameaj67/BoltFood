@@ -37,7 +37,7 @@ class OverlaySearchHeaderView: UIView {
     }()
     let searchTextField: UITextField = {
         var tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(string: "Restaurants or cuisines", attributes: [.foregroundColor: UIColor.systemGray3,.font:UIFont(name: font.medium.rawValue, size: 14)!])
+        tf.attributedPlaceholder = NSAttributedString(string: "Restaurants or cuisines", attributes: [.foregroundColor: UIColor.systemGray3,.font:UIFont(name: font.medium.rawValue, size: 12)!])
         tf.borderStyle = .none
         tf.textColor = .black
         tf.backgroundColor = .white
@@ -50,7 +50,7 @@ class OverlaySearchHeaderView: UIView {
     let cancelButton: UIButton = {
         var btn = UIButton(frame:.zero)
         btn.setTitle("Cancel", for: .normal)
-        btn.titleLabel!.font = UIFont(name: font.light.rawValue, size: 14)
+        btn.titleLabel!.font = UIFont(name: font.light.rawValue, size: 12)
         btn.setTitleColor(color.black, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
@@ -67,8 +67,8 @@ class OverlaySearchHeaderView: UIView {
         
             searchIcon.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
             searchIcon.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -20),
-            searchIcon.widthAnchor.constraint(equalToConstant: 25),
-            searchIcon.heightAnchor.constraint(equalToConstant: 25),
+            searchIcon.widthAnchor.constraint(equalToConstant: 22),
+            searchIcon.heightAnchor.constraint(equalToConstant: 22),
             
             searchTextField.centerYAnchor.constraint(equalTo: searchIcon.centerYAnchor),
             searchTextField.leadingAnchor.constraint(equalTo: searchIcon.trailingAnchor, constant: 15),

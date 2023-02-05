@@ -19,11 +19,11 @@ extension UIView {
     }
     
     func addBottomShadows(){
-        layer.shadowColor = color.grey.cgColor
+        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         layer.shadowRadius = 3
         layer.masksToBounds  = false
         layer.shadowOffset =  CGSize(width: 0, height: 3)
-        layer.shadowOpacity = 0.6
+        layer.shadowOpacity = 0.4
         backgroundColor = .white
         layer.shadowPath = CGPath(rect: CGRect(x: 0,y: bounds.maxY - layer.shadowRadius,width: bounds.width,height: layer.shadowRadius), transform: .none)
     }

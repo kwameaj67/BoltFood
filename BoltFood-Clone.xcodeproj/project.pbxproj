@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65D2512D298EF8F500A2975E /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2512C298EF8F500A2975E /* UIViewController+Ext.swift */; };
 		9829EE3529150B6A004A0A4A /* OverlaySearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9829EE3429150B6A004A0A4A /* OverlaySearchHeaderView.swift */; };
 		98358FCE28CDD784007EE79B /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98358FCD28CDD784007EE79B /* AboutCell.swift */; };
 		98358FD028CDDA9C007EE79B /* AboutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98358FCF28CDDA9C007EE79B /* AboutHeaderView.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65D2512C298EF8F500A2975E /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		9829EE3429150B6A004A0A4A /* OverlaySearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySearchHeaderView.swift; sourceTree = "<group>"; };
 		98358FCD28CDD784007EE79B /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		98358FCF28CDDA9C007EE79B /* AboutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHeaderView.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				989E43B828BBB73400BEBC04 /* UIImage+Ext.swift */,
 				986318D728D3F1F100DF2C96 /* Type+Ext.swift */,
 				9870A40F28D6875700A5CF04 /* UITextField+Ext.swift */,
+				65D2512C298EF8F500A2975E /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				989E43C028BD8AAD00BEBC04 /* UserOption.swift in Sources */,
 				98EA028028FB0975009ED778 /* FoodDetailVC.swift in Sources */,
 				989C3CC728C8C09400AD4678 /* FoodDescriptionDetailsView.swift in Sources */,
+				65D2512D298EF8F500A2975E /* UIViewController+Ext.swift in Sources */,
 				98646BBA28C0CDAF001068EA /* MealCategory.swift in Sources */,
 				989E43A428BA7DE000BEBC04 /* BFButton.swift in Sources */,
 				98F1E11528FF3BAE00B3B2A6 /* DeliveryInfoCell.swift in Sources */,
@@ -805,14 +809,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445LZL99JS;
 				INFOPLIST_FILE = "BoltFood-Clone/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Projects.BoltFood-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -824,14 +832,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 445LZL99JS;
 				INFOPLIST_FILE = "BoltFood-Clone/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Projects.BoltFood-Clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

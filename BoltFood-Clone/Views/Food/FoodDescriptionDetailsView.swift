@@ -25,7 +25,7 @@ class FoodDescriptionDetailsView: UIView {
         lb.text = "Green Pepper Chinese"
         lb.scaleFont()
         lb.numberOfLines = 1
-        lb.font = UIFont(name: font.bold.rawValue, size: 15)
+        lb.font = UIFont(name: font.bold.rawValue, size: 14)
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -34,7 +34,7 @@ class FoodDescriptionDetailsView: UIView {
         let lb = UILabel()
         lb.text = "GH₵5.00"
         lb.scaleFont()
-        lb.font = UIFont(name: font.regular.rawValue, size: 14)
+        lb.font = UIFont(name: font.regular.rawValue, size: 12)
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -50,7 +50,7 @@ class FoodDescriptionDetailsView: UIView {
         let lb = UILabel()
         lb.text = "GH₵1.00"
         lb.scaleFont()
-        lb.font = UIFont(name: font.semi_bold.rawValue, size: 12)
+        lb.font = UIFont(name: font.semi_bold.rawValue, size: 10)
         lb.textColor = .white
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -66,7 +66,7 @@ class FoodDescriptionDetailsView: UIView {
         let lb = UILabel()
         lb.text = "4.3"
         lb.scaleFont()
-        lb.font = UIFont(name: font.bold.rawValue, size: 14)
+        lb.font = UIFont(name: font.bold.rawValue, size: 12)
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -96,7 +96,7 @@ class FoodDescriptionDetailsView: UIView {
             foodTitleLabel.topAnchor.constraint(equalTo: topAnchor),
             foodTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             foodTitleLabel.centerYAnchor.constraint(equalTo: ratingContainer.centerYAnchor),
-//            foodTitleLabel.trailingAnchor.constraint(equalTo: ratingContainer.leadingAnchor, constant: -5),
+            foodTitleLabel.trailingAnchor.constraint(equalTo: ratingContainer.leadingAnchor, constant: -3),
            
             
             actualPriceLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -114,13 +114,12 @@ class FoodDescriptionDetailsView: UIView {
             ratingContainer.topAnchor.constraint(equalTo: topAnchor),
             ratingContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             ratingContainer.heightAnchor.constraint(equalToConstant: 14),
+            ratingContainer.widthAnchor.constraint(equalToConstant: 45),
             
-            ratingLabel.centerYAnchor.constraint(equalTo: ratingContainer.centerYAnchor),
             ratingLabel.trailingAnchor.constraint(equalTo: ratingContainer.trailingAnchor),
             
-            ratingIcon.centerYAnchor.constraint(equalTo: ratingContainer.centerYAnchor),
-            ratingIcon.leadingAnchor.constraint(equalTo: ratingContainer.leadingAnchor),
-            
+            ratingIcon.widthAnchor.constraint(equalToConstant: 15),
+            ratingIcon.heightAnchor.constraint(equalTo: ratingContainer.heightAnchor),
         ])
     }
 

@@ -63,7 +63,7 @@ class OrderHistoryCell: UITableViewCell {
         let lb = UILabel()
         lb.textColor = color.grey
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont(name: "EuclidCircularB-Light", size: 14)
+        lb.font = UIFont(name: "EuclidCircularB-Light", size: 13)
         lb.alpha = 0.8
         lb.scaleFont()
         return lb

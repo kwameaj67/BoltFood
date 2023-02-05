@@ -9,7 +9,7 @@ import UIKit
 
 class UserOptionCell: UITableViewCell {
 
-    static let reuseableId: String = "UserOption"
+    static let reuseableId: String = "UserOptionCell"
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: UserOptionCell.reuseableId)
         setupViews()
@@ -24,7 +24,7 @@ class UserOptionCell: UITableViewCell {
         let lb = UILabel()
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 17)
+        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 15)
         lb.scaleFont()
         return lb
     }()

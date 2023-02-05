@@ -18,7 +18,7 @@ class FoodCompositionalLayout {
     func discountLayout () -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(145)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
@@ -26,7 +26,7 @@ class FoodCompositionalLayout {
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
-            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
         return section
     }
@@ -34,7 +34,7 @@ class FoodCompositionalLayout {
     func deliveryLayout () -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(145)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
@@ -42,15 +42,16 @@ class FoodCompositionalLayout {
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
-            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
+        
         return section
     }
     
     func topRatedLayout () -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(200)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(145)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
@@ -58,7 +59,7 @@ class FoodCompositionalLayout {
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
-            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
         return section
     }
@@ -66,7 +67,7 @@ class FoodCompositionalLayout {
     func popularLayout () -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
                        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(170)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(145)), subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
@@ -74,7 +75,7 @@ class FoodCompositionalLayout {
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
-            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
         return section
     }
@@ -86,7 +87,7 @@ class FoodCompositionalLayout {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 30, bottom: 10, trailing: 30)
         section.boundarySupplementaryItems = [
-            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(70)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
         return section
     }
@@ -94,7 +95,7 @@ class FoodCompositionalLayout {
     func defaultLayout () -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(100), heightDimension: .absolute(170)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(160)), subitems: [item])
        
         let section = NSCollectionLayoutSection.init(group: group)
         section.orthogonalScrollingBehavior = .continuous
