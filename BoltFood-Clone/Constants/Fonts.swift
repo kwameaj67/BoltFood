@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum font:String {
+public enum font:String {
   case bold = "EuclidCircularB-Bold"
   case semi_bold = "EuclidCircularB-SemiBold"
   case medium = "EuclidCircularB-Medium"

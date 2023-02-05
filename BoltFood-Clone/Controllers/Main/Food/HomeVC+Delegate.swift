@@ -89,7 +89,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             view.headingButton.alpha = 1
         }
         else if indexPath.section == 4 {
-            view.headingLabel.text = "All restaurants"
+            view.headingLabel.text = "All restaurants and Stores"
             view.headingLabel.font = UIFont(name: font.bold.rawValue, size: 18)
             view.headingButton.isHidden = true
             view.headingButton.alpha = 0

@@ -37,7 +37,7 @@ class OrderHistoryCell: UITableViewCell {
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.numberOfLines = 1
-        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 15)
+        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 13)
         lb.scaleFont()
         return lb
     }()
@@ -54,7 +54,7 @@ class OrderHistoryCell: UITableViewCell {
         let lb = UILabel()
         lb.textColor = color.black
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 15)
+        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 14)
         lb.scaleFont()
         return lb
     }()
@@ -63,7 +63,7 @@ class OrderHistoryCell: UITableViewCell {
         let lb = UILabel()
         lb.textColor = color.grey
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont(name: "EuclidCircularB-Light", size: 13)
+        lb.font = UIFont(name: "EuclidCircularB-Regular", size: 13)
         lb.alpha = 0.8
         lb.scaleFont()
         return lb
@@ -97,13 +97,11 @@ class OrderHistoryCell: UITableViewCell {
         retryContainer.addSubview(retryIcon)
     }
     
-    func setupConstraints(){
-       
+    func setupConstraints(){       
         NSLayoutConstraint.activate([
-            
             orderImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 18),
             orderImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            orderImage.widthAnchor.constraint(equalToConstant: 68),
+            orderImage.widthAnchor.constraint(equalToConstant: 60),
             orderImage.heightAnchor.constraint(equalTo: orderImage.widthAnchor),
             
             
@@ -123,8 +121,6 @@ class OrderHistoryCell: UITableViewCell {
 
             dateLabel.topAnchor.constraint(equalTo: orderImage.bottomAnchor, constant: 7),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-
-                        
         ])
     }
     

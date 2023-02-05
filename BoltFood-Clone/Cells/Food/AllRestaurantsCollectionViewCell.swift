@@ -37,9 +37,9 @@ class AllRestaurantsCollectionViewCell: UICollectionViewCell {
     
     let foodDescriptionView: FoodDescriptionDetailsView = {
         let v = FoodDescriptionDetailsView()
-        v.foodTitleLabel.font = UIFont(name: font.bold.rawValue, size: 16)
+        v.foodTitleLabel.font = UIFont(name: font.semi_bold.rawValue, size: 16)
         v.actualPriceLabel.font =  UIFont(name: font.light.rawValue, size: 14)
-        v.discountPriceLabel.font =  UIFont(name: font.bold.rawValue, size: 13)
+        v.discountPriceLabel.font =  UIFont(name: font.bold.rawValue, size: 12)
         v.ratingLabel.font = UIFont(name: font.bold.rawValue, size: 14)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v

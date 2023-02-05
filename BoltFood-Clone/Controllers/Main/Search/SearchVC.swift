@@ -142,7 +142,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         40
     }
     
-   // MARK: - scrollViewDidScroll
+    // MARK: - scrollViewDidScroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if (y > 15.0){

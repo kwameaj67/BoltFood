@@ -45,6 +45,22 @@ class OrderVC: UIViewController {
         list.showsVerticalScrollIndicator = false
         return list
     }()
+    
+    func setupViews() {
+        view.addSubview(heading)
+        view.addSubview(orderTableView)
+    }
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            heading.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            heading.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            
+            orderTableView.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 10),
+            orderTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            orderTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            orderTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
 
 extension OrderVC: UITableViewDelegate, UITableViewDataSource {
@@ -58,30 +74,29 @@ extension OrderVC: UITableViewDelegate, UITableViewDataSource {
         cell.setupOrder(for: item)
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets.zero
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
+
+        let bgView = UIView(frame: cell.bounds)
+        bgView.backgroundColor = .white
+        cell.selectedBackgroundView = bgView
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 133.0
     }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! OrderHistoryCell
+        cell.orderImage.alpha = 0.8
+        cell.detailContainer.alpha = 0.8
+    }
     
-    func setupViews() {
-        view.addSubview(heading)
-        view.addSubview(orderTableView)
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! OrderHistoryCell
+        cell.orderImage.alpha = 1
+        cell.detailContainer.alpha = 1
     }
-    func setupConstraints() {
-        
-        NSLayoutConstraint.activate([
-            
-            heading.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            heading.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            
-            orderTableView.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 10),
-            orderTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            orderTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            orderTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-        
-    }
+    
+   
 }

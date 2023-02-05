@@ -57,13 +57,25 @@ extension UserVC: UITableViewDelegate, UITableViewDataSource {
         cell.setup(for: item)
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.selectionStyle = .default
         
-        let bgView = UIView()
-        bgView.backgroundColor = .white.withAlphaComponent(0.6)
+        let bgView = UIView(frame: cell.bounds)
+        bgView.backgroundColor = .white
         cell.selectedBackgroundView = bgView
         return cell
     }
    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! UserOptionCell
+        cell.label.alpha = 0.4
+        cell.icon.alpha = 0.4
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0)) as! UserOptionCell
+        cell.label.alpha = 1
+        cell.icon.alpha = 1
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 58.0

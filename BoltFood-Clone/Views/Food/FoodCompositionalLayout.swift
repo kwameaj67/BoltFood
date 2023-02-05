@@ -22,7 +22,7 @@ class FoodCompositionalLayout {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
+        section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
@@ -38,7 +38,7 @@ class FoodCompositionalLayout {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
+        section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
@@ -55,7 +55,7 @@ class FoodCompositionalLayout {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
+        section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
@@ -71,7 +71,7 @@ class FoodCompositionalLayout {
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
+        section.contentInsets = .init(top: 0, leading: 25, bottom: 0, trailing: 25)
         section.orthogonalScrollingBehavior = .continuous
         
         section.boundarySupplementaryItems = [
@@ -85,7 +85,7 @@ class FoodCompositionalLayout {
                        
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(260)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 30, bottom: 10, trailing: 30)
+        section.contentInsets = .init(top: 0, leading: 25, bottom: 10, trailing: 25)
         section.boundarySupplementaryItems = [
             .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(65)), elementKind: HeaderCollectionReusableView.reusableId, alignment: .top)
         ]
