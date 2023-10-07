@@ -1,6 +1,8 @@
 # BoltFood-Clone
 Decided to build a few screens of one of my favourite apps BoltFood.
 
+![platform](https://img.shields.io/badge/platform-iOS-orange?style=flat-square)
+
 ### Note ⚙️
 The application was built using: 
 * Xcode 12.5.1
